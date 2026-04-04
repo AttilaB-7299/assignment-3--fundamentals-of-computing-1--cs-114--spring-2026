@@ -10,11 +10,12 @@ public class Diamond {
     System.out.println("Input a number: ");
     int size = scanner.nextInt();
     printStar(size);
+    scanner.close();
   }
 
   public static void printStar(int size){
     getVars(size);
-    if (isEven == false){
+    if (!isEven){
         for (int linesToPrintT = numSpaces; linesToPrintT > 0; linesToPrintT--){
           System.out.print(spaces);
           System.out.print(stars);

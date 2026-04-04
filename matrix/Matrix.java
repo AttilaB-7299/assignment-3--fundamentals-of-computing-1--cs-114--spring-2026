@@ -6,17 +6,14 @@ public class Matrix {
   public Matrix(int size){
     this.size = size;
     this.matrix = new int[size][size];
-    printDefault();
-    populateMatrix();
-    printFlipped();
   }
 
   public void populateMatrix(){
     System.out.println();
     System.out.print("Populating matrix...");
     int currVal = 0;
-    for (int y = 0; y < size; y++) {
-      for (int x = 0; x < size; x++) {
+    for (int x = 0; x < size; x++) {
+      for (int y = 0; y < size; y++) {
         currVal++;
         matrix[x][y] = currVal;
       }
@@ -41,36 +38,69 @@ public class Matrix {
   }
 
   public void printMatrix() {
-    for (int y = 0; y < size; y++) {
-      for (int x = 0; x < size; x++) {
-        if (matrix[x][y] >= 10){
-          System.out.print(matrix[x][y] + "   ");
-        } else{
-          System.out.print(matrix[x][y] + "    ");
+    for (int x = 0; x < size; x++) {
+      for (int y = 0; y < size; y++) {
+        if (x + y == size - 1) {
+          System.out.print("\u001B[33m" + matrix[x][y] + "\u001B[0m");
+          if (matrix[x][y] >= 10){
+            System.out.print("   ");
+          } else{
+            System.out.print("    ");
+          }
+        } else {
+          System.out.print(matrix[x][y]);
+          if (matrix[x][y] >= 10){
+            System.out.print("   ");
+          } else{
+            System.out.print("    ");
+          }
         }
       }
       System.out.println();
     }
+    System.out.println();
   }
 
   public void printFlipped(){
     System.out.println("Printing flipped matrix");
-    flip();
-  }
-
-  public void flip(){
-    for (int y = 0; y < size; y++){
-      for (int x = 0; x < size; x++){
-        int temp = matrix[x][y];
-        matrix[x][y] = matrix[y][x];
-        matrix[y][x] = temp;
-        if (matrix[x][y] >= 10){
-          System.out.print(matrix[x][y] + "   ");
-        } else{
-          System.out.print(matrix[x][y] + "    ");
+    for (int x = 0; x < size; x++){
+      for (int y = 0; y < size; y++){
+        if (x + y == size - 1) {
+          System.out.print("\u001B[33m" + matrix[x][y] + "\u001B[0m");
+          if (matrix[x][y] >= 10){
+            System.out.print("   ");
+          } else{
+            System.out.print("    ");
+          }
+        } else {
+          System.out.print(matrix[x][y]);
+          if (matrix[x][y] >= 10){
+            System.out.print("   ");
+          } else{
+            System.out.print("    ");
+          }
         }
       }
       System.out.println();
     }
+    System.out.println();
+  }
+
+  public void flipMatrix() {
+    for (int x = 0; x < Math.ceil((double)size/2); x++) {
+      for (int y = 0; y < size; y++) {
+        if (x + y != size - 1) {
+          int newX = size - 1 - x;
+          int newY = size - 1 - y;
+          swap(x, y, newX, newY);
+        }
+      }
+    }
+  }
+
+  private void swap(int x1, int y1, int x2, int y2){
+    int temp = matrix[x1][y1];
+    matrix[x1][y1] = matrix[x2][y2];
+    matrix[x2][y2] = temp;
   }
 }

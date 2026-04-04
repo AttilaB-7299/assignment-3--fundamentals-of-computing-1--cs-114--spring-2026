@@ -6,6 +6,10 @@ public class RunMatrix {
     System.out.println("Please enter the size of your matrix: ");
     int input = scanner.nextInt();
     Matrix matrix = new Matrix(input);
+    matrix.printDefault();
+    matrix.populateMatrix();
+    matrix.flipMatrix();
+    matrix.printFlipped();
     scanner.close();
   }
 }
