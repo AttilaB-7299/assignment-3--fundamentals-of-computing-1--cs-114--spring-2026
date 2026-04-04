@@ -1,34 +1,33 @@
-import java.util.Random;
-
 public class Matrix {
   int size;
   int minInput = 1;
-  int maxInput = size * size;
-  Random random = new Random();
+  int[][] matrix;
 
   public Matrix(int size){
-    printDefault(size);
-    populateMatrix(size);
+    this.size = size;
+    this.matrix = new int[size][size];
+    printDefault();
+    populateMatrix();
+    printFlipped();
   }
 
-  public void populateMatrix(int size){
-    this.size = size;
-    int[][] matrix = new int[size][size];
+  public void populateMatrix(){
     System.out.println();
     System.out.print("Populating matrix...");
+    int currVal = 0;
     for (int y = 0; y < size; y++) {
       for (int x = 0; x < size; x++) {
-        int randNum = random.nextInt(1, (size^2));
-        matrix[x][y] = randNum;
+        currVal++;
+        matrix[x][y] = currVal;
       }
     }
     System.out.println("Matrix populated");
     System.out.println();
-    printMatrix(matrix);
+    printMatrix();
+    System.out.println();
   }
 
-  public void printDefault(int size){
-    int[][] matrix = new int[size][size];
+  public void printDefault(){
     System.out.println("Your matrix is " + size + " x " + size);
     System.out.println();
     System.out.println("Printing matrix with default values");
@@ -41,10 +40,35 @@ public class Matrix {
     }
   }
 
-  public void printMatrix(int[][] matrix) {
+  public void printMatrix() {
     for (int y = 0; y < size; y++) {
       for (int x = 0; x < size; x++) {
-        System.out.print(matrix[x][y] + "   ");
+        if (matrix[x][y] >= 10){
+          System.out.print(matrix[x][y] + "   ");
+        } else{
+          System.out.print(matrix[x][y] + "    ");
+        }
+      }
+      System.out.println();
+    }
+  }
+
+  public void printFlipped(){
+    System.out.println("Printing flipped matrix");
+    flip();
+  }
+
+  public void flip(){
+    for (int y = 0; y < size; y++){
+      for (int x = 0; x < size; x++){
+        int temp = matrix[x][y];
+        matrix[x][y] = matrix[y][x];
+        matrix[y][x] = temp;
+        if (matrix[x][y] >= 10){
+          System.out.print(matrix[x][y] + "   ");
+        } else{
+          System.out.print(matrix[x][y] + "    ");
+        }
       }
       System.out.println();
     }
