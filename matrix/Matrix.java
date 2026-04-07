@@ -6,6 +6,8 @@ public class Matrix {
   public Matrix(int size){
     this.size = size;
     this.matrix = new int[size][size];
+    System.out.println("Your matrix is " + size + " x " + size);
+    System.out.println();
   }
 
   public void populateMatrix(){
@@ -25,8 +27,6 @@ public class Matrix {
   }
 
   public void printDefault(){
-    System.out.println("Your matrix is " + size + " x " + size);
-    System.out.println();
     System.out.println("Printing matrix with default values");
     System.out.println();
     for (int y = 0; y < size; y++) {
