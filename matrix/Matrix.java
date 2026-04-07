@@ -1,6 +1,5 @@
 public class Matrix {
   int size;
-  int minInput = 1;
   int[][] matrix;
 
   public Matrix(int size){
