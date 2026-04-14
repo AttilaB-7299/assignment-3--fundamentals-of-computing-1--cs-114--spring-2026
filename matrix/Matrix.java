@@ -1,6 +1,6 @@
 public class Matrix {
-	int size;
-	int[][] matrix;
+	private int size;
+	private int[][] matrix;
 
 	public Matrix(int size){
 		this.size = size;

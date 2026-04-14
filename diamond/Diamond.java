@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Diamond {
-	static boolean isEven = false;
-	static int numSpaces;
-	static String spaces;
-	static String stars;
+	private static boolean isEven = false;
+	private static int numSpaces;
+	private static String spaces;
+	private static String stars;
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Input a number: ");
